@@ -30,6 +30,21 @@ Alt+ shift + F Source formatting in windows
 <% */ %>
 </code></pre>
 
+<h1> connect-redis ==>  </h1>
+https://stackoverflow.com/questions/20803429/using-redis-as-a-session-store-in-node-js-and-how-to-get-values-from-it
+<p>
+	need to change the version in package.json inorder to use redis store 
+	"connect-redis": "2.0.0",
+</p>
+
+in redis-cli get sess key by 
+==> Signed Cookie passed: {"connect.sid":"Dub4449n6med4fEhpxnouvGZmrUW5cjP"}
+<code>
+<pre>
+redis-cli 
+127.0.0.1 > get sess:Dub4449n6med4fEhpxnouvGZmrUW5cjP
+</pre>
+</code>
 
 Res.locals is a special object that is available to all templates that have access
 to this response

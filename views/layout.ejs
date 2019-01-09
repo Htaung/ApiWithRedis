@@ -6,17 +6,26 @@
         <%= title %>
     </title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <h1>PacktChat</h1>
+                <h1 class="float-left">PacktChat</h1>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4 top-margin">
+                <div class="float-right">
+                    <% if (isAuthenticated) { %>
+                    <%- partial('partials/user-loggedin') %>
+                    <% } else { %>
+                    <%- partial('partials/user-loggedout') %>
+                    <% } %>
+                </div>
             </div>
         </div>
         <div class="row">
-            <%= title %>
             <%- body %>
         </div>
     </div>
