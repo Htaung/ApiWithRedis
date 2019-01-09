@@ -26,31 +26,16 @@ app.set('view options', { defaultLayout: 'layout' });
 app.use(partials());
 app.use(log.logger);
 app.use(express.static(__dirname + '/static'));
-app.use(cookieParser('secret'));
+app.use(cookieParser(config.secret));
 //app.use(session());
 //app.use(session({ secret: 'secret' }));
-var options = {
-    //client: redis
-    host: 'localhost',
-    port: 6379
-    //url: 'redis://localhost'
-};
-
-/*app.use(session(
-    {
-        secret: 'secret',
-        cookie: { secure: true },
-        store: new RedisStore(options)
-    }
-));
-*/
 
 
 app.use(session({
-    secret: 'secret',
+    secret: config.secret,
     saveUninitialized: true,
     resave: true,
-    store: new RedisStore(options)
+    store: new RedisStore(config.redisOption)
 }));
 app.use(flash());
 app.use(util.templateRoutes);
@@ -74,9 +59,9 @@ app.use(function (req, res, next) {
 
 
 app.get('/', routes.index);
-app.get('/login', routes.login);
-app.post('/login', routes.loginProcess);
-app.get('/logout', routes.logOut);
+app.get(config.routes.login, routes.login);
+app.post(config.routes.login, routes.loginProcess);
+app.get(config.routes.logout, routes.logOut);
 //app.get('/chat', routes.chat);
 app.get('/chat', [util.requireAuthentication], routes.chat);
 app.get('/error', function (req, res, next) {
@@ -85,5 +70,5 @@ app.get('/error', function (req, res, next) {
 
 app.use(errorHandlers.error);
 app.use(errorHandlers.notFound);
-app.listen(3000);
+app.listen(config.port);
 console.log("App server running on port 3000");

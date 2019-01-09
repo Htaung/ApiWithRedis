@@ -23,7 +23,7 @@ module.exports.requireAuthentication = function
     if (req.session.isAuthenticated) {
         next();
     } else {
-        res.redirect('/login');
+        res.redirect(config.routes.login);
     }
 };
 

@@ -29,6 +29,7 @@ function login(req, res) {
 
 //add a reference to util at the top of the file
 var util = require('../middleware/utilities');
+var config = require('../config');
 //then modify loginProcess
 function loginProcess(req, res) {
     var isAuth = util.auth(req.body.username, req.body.password, req.session);
@@ -36,7 +37,7 @@ function loginProcess(req, res) {
         res.redirect('/chat');
     } else {
         req.flash('error', 'Wrong Username or Password');
-        res.redirect('/login');
+        res.redirect(config.routes.login);
     }
 };
 
