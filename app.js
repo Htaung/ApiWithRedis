@@ -13,7 +13,7 @@ var log = require('./middleware/log');
 var app = express();
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var config = require('./config');
 
 
 //app.use(errorHandlers.notFound);
