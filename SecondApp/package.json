@@ -1,0 +1,16 @@
+{
+    "name": "secondApp",
+    "version": "0.0.0",
+    "main": "namespace.js",
+    "scripts": {
+        "stop": "echo not implemented",
+        "start": "node ./namespace.js"
+    },
+    "dependencies": {
+        "connect": "^3.6.6",
+        "cookie": "0.1.1",
+        "express-session": "^1.15.6",
+        "socket.io": "1.0.6",
+        "socket.io-redis": "0.1.3"
+    }
+}
